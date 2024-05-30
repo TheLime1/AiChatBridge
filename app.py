@@ -81,8 +81,9 @@ def chat_stream():
     message = str(message)  # convert message to string
 
     def generate():
-        for chunk in client.send_message(bot, message):
-            yield 'data: %s\n\n' % json.dumps({'html': '<p>' + chunk["text"] + '</p>'})
+        for i, chunk in enumerate(client.send_message(bot, message)):
+            # Add the 'overwrite' property to the messages
+            yield 'data: %s\n\n' % json.dumps({'html': '<p>' + chunk["text"] + '</p>', 'overwrite': 'True'})
 
     return Response(generate(), mimetype='text/event-stream')
 
