@@ -1,3 +1,4 @@
+import re
 from flask import Response
 import configparser
 from requests.exceptions import ConnectionError
@@ -82,8 +83,11 @@ def chat_stream():
 
     def generate():
         for i, chunk in enumerate(client.send_message(bot, message)):
+            # Convert Markdown links to HTML links
+            chunk_text = re.sub(r"\[(.*?)\]\((.*?)\)",
+                                r'<a href="\2">\1</a>', chunk["text"])
             # Add the 'overwrite' property to the messages
-            yield 'data: %s\n\n' % json.dumps({'html': '<p>' + chunk["text"] + '</p>', 'overwrite': 'True'})
+            yield 'data: %s\n\n' % json.dumps({'html': '<p>' + chunk_text + '</p>', 'overwrite': 'True'})
 
     return Response(generate(), mimetype='text/event-stream')
 
