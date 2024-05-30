@@ -82,7 +82,7 @@ def chat_stream():
 
     def generate():
         for chunk in client.send_message(bot, message):
-            yield json.dumps({'text': chunk["text"]}) + '\n'
+            yield 'data: %s\n\n' % json.dumps({'html': '<p>' + chunk["text"] + '</p>'})
 
     return Response(generate(), mimetype='text/event-stream')
 
