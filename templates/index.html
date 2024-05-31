@@ -6,8 +6,7 @@
   </head>
   <body>
     <deep-chat
-      stream="true"
-      request='{"url": "http://localhost:7890/chat-stream", "method": "POST", "headers": {"Content-Type": "application/json"}}'
+      request='{"url": "http://localhost:7890/chat", "method": "POST", "headers": {"Content-Type": "application/json"}}'
       style="
         border-radius: 10px;
         width: 96vw;
@@ -91,7 +90,7 @@
       elementRef.addEventListener("sendMessage", (event) => {
         const message = event.detail.text;
         //change the URL HERE
-        fetch("http://localhost:7890/chat-stream", {
+        fetch("http://localhost:7890/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

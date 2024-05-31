@@ -86,6 +86,13 @@ def chat_stream():
             # Convert Markdown links to HTML links
             chunk_text = re.sub(r"\[(.*?)\]\((.*?)\)",
                                 r'<a href="\2">\1</a>', chunk["text"])
+
+            # Convert Markdown lists to HTML lists
+            chunk_text = re.sub(
+                r"\n\* (.*?)\n", r'<ul><li>\1</li></ul>', chunk_text)
+            chunk_text = re.sub(
+                r"\n\- (.*?)\n", r'<ul><li>\1</li></ul>', chunk_text)
+
             # Add the 'overwrite' property to the messages
             yield 'data: %s\n\n' % json.dumps({'html': '<p>' + chunk_text + '</p>', 'overwrite': 'True'})
 
