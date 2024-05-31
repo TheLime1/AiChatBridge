@@ -47,7 +47,7 @@ def handle_exception(e):
 
 # ------------------ POE API ------------------
 
-# *****************with streaming*****************
+# *****************without streaming*****************
 
 
 @app.route("/chat", methods=["POST"])
