@@ -18,11 +18,11 @@ config = configparser.RawConfigParser()
 config.read('secrets.ini')
 
 tokens = {
-    'b': config.get('Tokens', 'b'),
-    'lat': config.get('Tokens', 'lat')
+    'p-b': config.get('Tokens', 'b'),
+    'p-lat': config.get('Tokens', 'lat')
 }
 
-client = PoeApi(cookie=tokens)
+client = PoeApi(tokens=tokens)
 
 bot = config.get('Bot', 'bot_name')
 
