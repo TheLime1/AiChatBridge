@@ -1,5 +1,7 @@
 # AiChatBridge
- 
+
+**Warning: The Poe API repository has been archived by the owner on Mar 10, 2025. You can find the archived repository [here](https://github.com/snowby666/poe-api-wrapper).**
+
 ![Untitled design](https://github.com/TheLime1/AiChatBridge/assets/47940043/5f81fe22-1fcf-4408-9207-857d144322d6)
 
 ## Introduction
